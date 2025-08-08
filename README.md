@@ -117,5 +117,5 @@ Los archivos se cifran con **AES-GCM** como cifrado simétrico rápido, y la cla
 
 ## Créditos
 
-Desarrollado por Mauro Carrillo — HackSyndicate 2025  
-¡Bienvenido al futuro de la criptografía local!
+Desarrollado por [**HackSyndicate**](https://www.hacksyndicate.xyz)  
+Coordinado por [**Mauro Carrillo (Pr00f)**](https://www.linkedin.com/in/mauro-carrillo-7a326a208)
