@@ -13,8 +13,6 @@ Usa dos algoritmos reconocidos por el NIST para la era post-cuántica:
 - 🔒 **McEliece**: para cifrado asimétrico (muy rápido, resistente a ataques cuánticos).
 - ✍️ **Dilithium2**: para firma digital (verifica integridad y autenticidad de archivos).
 
-Los archivos se cifran con **AES-GCM** como cifrado simétrico rápido, y la clave AES se encapsula usando **McEliece**.
-
 ---
 
 ## Comandos disponibles
