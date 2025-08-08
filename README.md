@@ -1,3 +1,4 @@
+
 # 🔐 McEliece Encryptor CLI
 
 **Cifrado local con McEliece + AES-GCM + Firma Post-Cuántica (Dilithium2)**  
@@ -29,7 +30,7 @@ Usa dos algoritmos reconocidos por el NIST para la era post-cuántica:
 
 ## Flujo de Cifrado
 
-```text
+```
 ┌────────────┐       ┌──────────────┐       ┌────────────┐
 │  keygen    │       │   encrypt    │       │   decrypt  │
 └────┬───────┘       └────┬─────────┘       └────┬───────┘
@@ -48,7 +49,7 @@ Usa dos algoritmos reconocidos por el NIST para la era post-cuántica:
 
 ## Flujo de Firma
 
-```text
+```
 ┌────────────┐      ┌────────────┐      ┌────────────┐
 │   sign     │      │   verify   │      │ Resultado  │
 └────┬───────┘      └────┬───────┘      └────┬───────┘
@@ -102,6 +103,51 @@ Usa dos algoritmos reconocidos por el NIST para la era post-cuántica:
 
 - **McEliece**: algoritmo de cifrado basado en códigos correctores de errores (Goppa Codes). Seleccionado por el NIST como candidato para resistir computadoras cuánticas. Extremadamente rápido en cifrado y resistente a ataques estructurales.
 - **Dilithium2**: esquema de firma digital basado en retículas (lattices). Forma parte del conjunto CRYSTALS de NIST PQC y es eficiente y seguro contra ataques cuánticos.
+
+---
+
+## 🧮 ¿Pero qué es realmente una “firma” en Dilithium2?
+
+Cuando decimos que firmamos un archivo, **no hablamos de una “firma textual” o de un hash firmado**, como en RSA o ECDSA. En Dilithium2, **una firma digital es un conjunto de vectores calculados** sobre estructuras matemáticas llamadas **retículas (lattices)**.
+
+Estos vectores permiten comprobar que un mensaje fue generado por alguien que conoce la clave privada, pero sin revelar dicha clave.
+
+### 🔐 Firma ≠ texto, Firma = cálculo de vectores
+
+Dilithium2 se basa en problemas como **SIS (Short Integer Solution)** y **LWE (Learning With Errors)**. No hay curvas ni factorizaciones; solo álgebra modular.
+
+---
+
+## 📐 Fundamentos matemáticos de Dilithium2 (resumen técnico)
+
+### 🗝️ Claves
+
+- Clave pública:
+
+```
+A ∈ ℤ_q^{k × l}, t = A · s + e
+```
+
+Donde:
+- `A`: matriz generada de forma determinista (a partir de una semilla)
+- `s`, `e`: vectores secretos de baja norma
+- `t`: parte de la clave pública
+
+### 📝 Proceso de firma
+
+Dado un mensaje µ:
+
+1. Generar un vector aleatorio y ∈ ℤ_q^l
+2. Calcular: w = A · y
+3. Derivar un reto: c = H(µ, w₁)
+4. Calcular la firma: z = y + c · s
+
+La firma es el par (z, c)
+
+### ✅ Verificación
+
+1. Reconstruir: w' = A · z − c · t
+2. Verificar: ¿c =? H(µ, w'₁)
 
 ---
 
