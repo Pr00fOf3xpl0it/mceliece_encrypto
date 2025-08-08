@@ -1,4 +1,6 @@
 
+<img width="1536" height="1024" alt="ChatGPT Image 7 ago 2025, 09_16_53 p m" src="https://github.com/user-attachments/assets/0cf5d808-6f74-48b0-b56c-2222d56cfd24" />
+
 # 🔐 McEliece Encryptor CLI
 
 **Cifrado local con McEliece + AES-GCM + Firma Post-Cuántica (Dilithium2)**  
